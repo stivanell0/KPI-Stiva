@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KPI Indicators</title>
+<title>Indicadores de KPIs</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -42,7 +42,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
-
+ 
   .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 100; }
   .logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--muted); letter-spacing: 0.05em; }
   .logo span { color: var(--accent); }
@@ -52,13 +52,13 @@
   select:focus, button:focus { outline: none; border-color: var(--accent); }
   .btn-accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
   .btn-accent:hover { background: #4f51d9; border-color: #4f51d9; }
-
+ 
   .main { padding: 24px; max-width: 1300px; margin: 0 auto; }
-
+ 
   .page-header { margin-bottom: 24px; }
   .page-title { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
   .page-month { font-size: 13px; color: var(--muted); font-family: 'DM Mono', monospace; }
-
+ 
   .summary { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 28px; }
   .sum-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
   .sum-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-family: 'DM Mono', monospace; }
@@ -67,50 +67,50 @@
   .s-amber .sum-value { color: var(--amber); }
   .s-red .sum-value { color: var(--red); }
   .s-muted .sum-value { color: var(--muted); }
-
+ 
   .section-title { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'DM Mono', monospace; margin-bottom: 10px; margin-top: 28px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-
+ 
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 10px; margin-bottom: 10px; }
-
+ 
   .kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; transition: border-color 0.2s; }
   .kpi-card:hover { border-color: var(--muted); }
   .kpi-card.on   { border-left: 3px solid var(--green); }
   .kpi-card.risk { border-left: 3px solid var(--amber); }
   .kpi-card.off  { border-left: 3px solid var(--red); }
   .kpi-card.empty { border-left: 3px solid var(--border); }
-
+ 
   .kpi-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; margin-bottom: 12px; }
   .kpi-name { font-size: 13px; font-weight: 500; color: var(--text); flex: 1; line-height: 1.4; }
-
+ 
   .status-pill { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; flex-shrink: 0; }
   .pill-on    { background: var(--green-bg); color: var(--green); }
   .pill-risk  { background: var(--amber-bg); color: var(--amber); }
   .pill-off   { background: var(--red-bg);   color: var(--red); }
   .pill-empty { background: var(--surface2);  color: var(--muted); }
-
+ 
   .kpi-numbers { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 8px; }
   .kpi-actual { font-size: 24px; font-weight: 600; font-family: 'DM Mono', monospace; }
   .kpi-right  { text-align: right; }
   .kpi-pct    { font-size: 12px; font-weight: 600; font-family: 'DM Mono', monospace; }
   .kpi-meta   { font-size: 11px; color: var(--muted); margin-top: 1px; }
-
+ 
   .bar-track { height: 3px; background: var(--surface2); border-radius: 2px; margin-bottom: 12px; overflow: hidden; }
   .bar-fill  { height: 100%; border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
-
+ 
   .kpi-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; border-top: 1px solid var(--border); padding-top: 12px; }
   .inp-group  { display: flex; flex-direction: column; gap: 3px; }
   .inp-label  { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
   .inp-field  { background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px; padding: 5px 8px; border-radius: 7px; width: 100%; transition: border-color 0.2s; }
   .inp-field:focus { outline: none; border-color: var(--accent); }
-
+ 
   .del-btn { background: none; border: none; color: var(--muted); font-size: 13px; cursor: pointer; padding: 2px 5px; border-radius: 5px; flex-shrink: 0; line-height: 1; }
   .del-btn:hover { color: var(--red); background: var(--red-bg); }
-
+ 
   .add-kpi-btn { width: 100%; padding: 10px; border-radius: 10px; border: 1px dashed var(--border); background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; margin-bottom: 6px; }
   .add-kpi-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,102,241,0.05); }
-
+ 
   .embed-hint { background: var(--blue-bg); border: 1px solid #1a2a50; border-radius: 10px; padding: 11px 16px; font-size: 12px; color: #7aaaf7; font-family: 'DM Mono', monospace; text-align: center; margin-top: 32px; }
-
+ 
   @media (max-width: 640px) {
     .main { padding: 14px; }
     .summary { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -119,31 +119,31 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="topbar">
-  <div class="logo">stiva.<span>kpi</span></div>
+  <div class="logo">stiva<span>design</span></div>
   <div class="controls">
     <select id="monthSel" onchange="render()"></select>
     <button class="btn-accent" onclick="addKpi()">+ KPI</button>
   </div>
 </div>
-
+ 
 <div class="main">
   <div class="page-header">
     <div class="page-title">KPI Indicators</div>
     <div class="page-month" id="pageMonth"></div>
   </div>
-
+ 
   <div class="summary" id="summary"></div>
   <div id="sections"></div>
   <div class="embed-hint">Cole o link desta página no Notion com /embed para visualizar inline</div>
 </div>
-
+ 
 <script>
 const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 const now = new Date();
 const STORAGE_KEY = 'stiva_kpi_v3';
-
+ 
 const CATEGORIES = [
   { id:'organico',    label:'Orgânico & Conteúdo' },
   { id:'engajamento', label:'Engajamento' },
@@ -151,7 +151,7 @@ const CATEGORIES = [
   { id:'producao',    label:'Produção' },
   { id:'outros',      label:'Outros' },
 ];
-
+ 
 const DEFAULT_KPIS = [
   { name:'Alcance',                        actual:'', target:'', unit:'un',    hib:true,  cat:'organico'    },
   { name:'Impressões',                     actual:'', target:'', unit:'un',    hib:true,  cat:'organico'    },
@@ -175,26 +175,26 @@ const DEFAULT_KPIS = [
   { name:'Stories publicados',             actual:'', target:'', unit:'un',    hib:true,  cat:'producao'    },
   { name:'Taxa de aprovação de conteúdo',  actual:'', target:'', unit:'%',     hib:true,  cat:'producao'    },
 ];
-
+ 
 function loadData() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { kpis:{} }; }
   catch { return { kpis:{} }; }
 }
 function saveData() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {} }
-
+ 
 let data = loadData();
-
+ 
 function getKpis(m) {
   if (!data.kpis[m]) data.kpis[m] = DEFAULT_KPIS.map(k=>({...k}));
   return data.kpis[m];
 }
-
+ 
 function statusOf(pct, hib) {
   const good = hib ? pct>=90 : pct<=110;
   const warn = hib ? pct>=70 : pct<=130;
   return good?'on': warn?'risk':'off';
 }
-
+ 
 function fmtVal(v, unit) {
   if (v===''||v==null) return '—';
   const n = parseFloat(v);
@@ -204,7 +204,7 @@ function fmtVal(v, unit) {
   if (unit==='x')  return n.toFixed(1)+'x';
   return n.toLocaleString('pt-BR');
 }
-
+ 
 function kpiCardHtml(k, i) {
   const hasData = k.actual!==''&&k.target!==''&&k.actual!=null&&k.target!=null;
   const pct = hasData?(parseFloat(k.actual)/parseFloat(k.target))*100:0;
@@ -255,12 +255,12 @@ function kpiCardHtml(k, i) {
     </div>
   </div>`;
 }
-
+ 
 function render() {
   const m = document.getElementById('monthSel').value;
   document.getElementById('pageMonth').textContent = m;
   const kpis = getKpis(m);
-
+ 
   let on=0,risk=0,off=0,sem=0;
   kpis.forEach(k=>{
     if(k.actual===''||k.target===''){sem++;return;}
@@ -268,14 +268,14 @@ function render() {
     const s=statusOf(pct,k.hib!==false);
     if(s==='on')on++;else if(s==='risk')risk++;else off++;
   });
-
+ 
   document.getElementById('summary').innerHTML=`
     <div class="sum-card s-green"><div class="sum-label">On Track</div><div class="sum-value">${on}</div></div>
     <div class="sum-card s-amber"><div class="sum-label">At Risk</div><div class="sum-value">${risk}</div></div>
     <div class="sum-card s-red"><div class="sum-label">Off Track</div><div class="sum-value">${off}</div></div>
     <div class="sum-card s-muted"><div class="sum-label">Sem dados</div><div class="sum-value">${sem}</div></div>
   `;
-
+ 
   let html='';
   CATEGORIES.forEach(cat=>{
     const catKpis=kpis.map((k,i)=>({k,i})).filter(({k})=>k.cat===cat.id);
@@ -284,28 +284,28 @@ function render() {
     html+=`<div class="kpi-grid">${catKpis.map(({k,i})=>kpiCardHtml(k,i)).join('')}</div>`;
     html+=`<button class="add-kpi-btn" onclick="addKpi('${cat.id}')">+ Adicionar KPI em ${cat.label}</button>`;
   });
-
+ 
   const semCat=kpis.map((k,i)=>({k,i})).filter(({k})=>!CATEGORIES.find(c=>c.id===k.cat));
   if(semCat.length){
     html+=`<div class="section-title">Outros</div>`;
     html+=`<div class="kpi-grid">${semCat.map(({k,i})=>kpiCardHtml(k,i)).join('')}</div>`;
   }
-
+ 
   document.getElementById('sections').innerHTML=html;
 }
-
+ 
 function upd(i,field,value){
   const m=document.getElementById('monthSel').value;
   getKpis(m)[i][field]=value;
   saveData();render();
 }
-
+ 
 function delKpi(i){
   const m=document.getElementById('monthSel').value;
   getKpis(m).splice(i,1);
   saveData();render();
 }
-
+ 
 function addKpi(cat){
   const m=document.getElementById('monthSel').value;
   const name=prompt('Nome do KPI:');
@@ -313,7 +313,7 @@ function addKpi(cat){
   getKpis(m).push({name:name.trim(),actual:'',target:'',unit:'%',hib:true,cat:cat||'outros'});
   saveData();render();
 }
-
+ 
 function populateMonths(){
   const ms=document.getElementById('monthSel');
   const year=now.getFullYear();
@@ -323,7 +323,7 @@ function populateMonths(){
   }).join('');
   ms.value=`${MONTHS[now.getMonth()]} ${year}`;
 }
-
+ 
 populateMonths();
 render();
 </script>
